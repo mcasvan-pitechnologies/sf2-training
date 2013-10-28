@@ -1,0 +1,24 @@
+Possible controllers:
+    CheckoutController
+    UserController (Shopping cart, My Account, Dashboard)
+        -> attach cart as sidebar to UserController
+    ProductsController (Product Detail, Browse Products, Latest Products - Homepage, Search Results)
+
+Pages:
+- Homepage (Product Detail, Browse Products, Latest Products - Homepage, Search Results)
+- My Account
+- Checkout
+    1. Billing
+    2. Shipping Information
+    3. Shipping Method
+    4. Payment Information
+    5. Order Review
+- Shopping cart
+- Dashboard
+    1. Account Dashboard
+    2. Recent Orders
+    3. Account information
+    4. Address book
+
+
+

@@ -1,0 +1,63 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: casvanmarcel
+ * Date: 10/25/13
+ * Time: 6:55 PM
+ */
+
+namespace EShop\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+/**
+ * @ORM\Entity()
+ * @ORM\Table(name="orders")
+ */
+class Order {
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Adress")
+     * @ORM\JoinColumn(name="billing_address_id", referencedColumnName="id")
+     */
+    protected $billing_adress;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Adress")
+     * @ORM\JoinColumn(name="shipping_address_id", referencedColumnName="id")
+     */
+    protected $shipping_address;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Cart")
+     * @ORM\JoinColumn(name="cart_id", referencedColumnName="id")
+     */
+    protected $cart;
+
+    /**
+     * @ORM\Column(type="decimal", precision=2, scale=10, nullable=false)
+     */
+    protected $total = 0.00;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $date;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="State")
+     * @ORM\JoinColumn(name="state_id", referencedColumnName="id")
+     */
+    protected $state;
+} 

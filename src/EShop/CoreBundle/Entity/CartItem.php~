@@ -1,0 +1,53 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: casvanmarcel
+ * Date: 10/25/13
+ * Time: 6:36 PM
+ */
+
+namespace EShop\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity()
+ * @ORM\Table(name="cart_items")
+ */
+class CartItem {
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer", nullable=false)
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Cart")
+     * @ORM\Column(nullable=false)
+     * @ORM\JoinColumn(name="cart_id", referencedColumnName="id")
+     */
+    protected $cart;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Product")
+     * @ORM\Column(nullable=false)
+     * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     */
+    protected $product;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $title;
+
+    /**
+     * @ORM\Column(type="integer", nullable=false)
+     */
+    protected $quantity;
+
+    /**
+     * @ORM\Column(type="decimal", precision=2, scale=10, nullable=false)
+     */
+    protected $price = 0.00;
+} 

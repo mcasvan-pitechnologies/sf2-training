@@ -1,0 +1,5 @@
+e_shop_core_homepage:
+    pattern:  /
+    defaults: { _controller: EShopCoreBundle:Products:index }
+    requirements:
+         _method:  GET

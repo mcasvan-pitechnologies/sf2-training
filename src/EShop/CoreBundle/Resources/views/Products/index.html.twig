@@ -1,0 +1,52 @@
+{% extends 'EShopCoreBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="main-container col3-layout">
+        <div class="main">
+            <div class="col-wrapper">
+                <div class="col-main">
+                    <div class="box best-selling">
+                        <h3>Latest Products</h3>
+                        <table cellspacing="0" border="0">
+                            <tbody>
+                            {% for product in products %}
+                                {#set the class variable for toggle: #}
+                                {% if loop.index0 == 0 %}
+                                    {% set class='odd' %}
+                                {% endif %}
+
+                                {% if loop.index0 % 2 == 0 %}
+                                <tr class="{{ class }}">
+                                    {% include 'EShopCoreBundle:Products:homepage_item.html.twig' %}
+                                    {% if class == 'even' %}
+                                        {% set class='odd' %}
+                                    {% else %}
+                                        {% set class='even' %}
+                                    {% endif %}
+                                {% else %}
+                                    {% include 'EShopCoreBundle:Products:homepage_item.html.twig' %}
+                                    </tr>
+                                {% endif %}
+                            {% else %}
+                                <p>There are no products available.</p>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-left sidebar"></div>
+            </div>
+
+            <div class="col-right sidebar">
+                <div class="block block-cart">
+                    <div class="block-title">
+                        <strong><span>My Cart</span></strong>
+                    </div>
+                    <div class="block-content">
+                        <p class="empty">You have no items in your shopping cart.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: casvanmarcel
+ * Date: 10/25/13
+ * Time: 6:32 PM
+ */
+
+namespace EShop\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity()
+ * @ORM\Table(name="carts")
+ * @ORM\HasLifecycleCallbacks()
+ */
+class Cart {
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     */
+    protected $date;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    protected $active = true;
+
+    /**
+     * @ORM\Column(type="decimal", precision=2, scale=10, nullable=false)
+     */
+    protected $total = 0.00;
+} 

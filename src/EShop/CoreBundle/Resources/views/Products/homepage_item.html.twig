@@ -1,0 +1,12 @@
+{# this item is used on the homepage index, where we display the 6 latest items #}
+<td>
+    <a href="#">
+        <img width="95" alt="" src="{{ asset('bundles/eshopcore/images/'~product['filename']) }}" class="product-img">
+    </a>
+
+    <div class="product-description">
+        <p><a href="#">{{ product[0].title }}</a></p>
+
+        <p>See all <a href="#">{{ product[0].category.label }}</a></p>
+    </div>
+</td>

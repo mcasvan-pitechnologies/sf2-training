@@ -1,0 +1,109 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: casvanmarcel
+ * Date: 10/25/13
+ * Time: 7:09 PM
+ */
+
+namespace EShop\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity()
+ * @ORM\Table(name="users")
+ * @ORM\HasLifecycleCallbacks()
+ */
+class User {
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string", nullable=false)
+     */
+    protected $username;
+
+    /**
+     * @ORM\Column(type="string", nullable=false)
+     */
+    protected $password;
+
+    /**
+     * @ORM\Column(type="string", nullable=false)
+     */
+    protected $firstname;
+
+    /**
+     * @ORM\Column(type="string", nullable=false)
+     */
+    protected $lastname;
+
+    /**
+     * @ORM\Column(type="string", nullable=false)
+     */
+    protected $email;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $phone;
+
+    /**
+     * @ORM\Column(type="boolean")
+     * if 'male' set to true
+     */
+    protected $gender = true;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Role")
+     * @ORM\JoinColumn(name="role_id", referencedColumnName="id")
+     */
+    protected $role;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $activated = true;
+
+    /**
+     * @ORM\Column(type="string", nullable=false, length=40)
+     */
+    protected $activation_key;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Adress")
+     * @ORM\JoinColumn(name="billing_address_id", referencedColumnName="id")
+     */
+    protected $billing_adress;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Adress")
+     * @ORM\JoinColumn(name="shipping_address_id", referencedColumnName="id")
+     */
+    protected $shipping_address;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $created_at;
+
+    public function __construct() {
+        $this->setCreated(new \DateTime());
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return User
+     */
+    public function setCreated($created) {
+        $this->created = $created;
+        return $this;
+    }
+}
